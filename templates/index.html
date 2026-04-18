@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart AI Assistant</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <h1>Smart AI Assistant</h1>
+      <p class="subtitle">Multimodal AI - Text Generation + Human Feedback + Image Generation</p>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Prompt Input -->
+    <section class="card" id="section-prompt">
+      <h2>Enter a Prompt</h2>
+      <p class="hint">Use a visual, descriptive prompt e.g. "A robot helping humans in daily life"</p>
+      <div class="row">
+        <input
+          type="text"
+          id="prompt-input"
+          placeholder="Type your prompt here..."
+          onkeydown="if(event.key==='Enter') generateText()"
+        />
+        <button id="btn-generate-text" onclick="generateText()">Generate Text</button>
+      </div>
+      <p class="error hidden" id="prompt-error"></p>
+    </section>
+
+    <!-- Part 1: Text Responses -->
+    <section class="card hidden" id="section-text">
+      <div class="section-header">
+        <h2>Part 1 - Text Responses</h2>
+        <span class="badge">GPT-2</span>
+      </div>
+      <p class="hint">Rate each response from 1 to 5 stars, then submit to see the ranking.</p>
+
+      <div id="responses-container"></div>
+
+      <button class="btn-outline" id="btn-submit-ratings" onclick="submitRatings()">
+        Submit Ratings &amp; Rank
+      </button>
+    </section>
+
+    <!-- Rankings -->
+    <section class="card hidden" id="section-rankings">
+      <h2>Response Rankings</h2>
+      <p class="hint">Ranked by average rating - simulating an RLHF reward model.</p>
+      <div id="rankings-container"></div>
+
+      <div class="divider"></div>
+      <div class="row" style="margin-top: 0;">
+        <p class="hint" style="margin: 0;">Same prompt will be used for image generation.</p>
+        <button onclick="generateImage()">Generate Image</button>
+      </div>
+    </section>
+
+    <!-- Part 2: Image Generation -->
+    <section class="card hidden" id="section-image">
+      <div class="section-header">
+        <h2>Part 2 - Image Generation</h2>
+        <span class="badge">FLUX.1-schnell</span>
+      </div>
+      <p class="hint" id="image-prompt-display"></p>
+
+      <div class="loading hidden" id="image-loading">
+        <div class="spinner"></div>
+        Generating image, this may take 30&ndash;60 seconds&hellip;
+      </div>
+      <p class="error hidden" id="image-error"></p>
+      <div id="image-container"></div>
+    </section>
+
+  </main>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>

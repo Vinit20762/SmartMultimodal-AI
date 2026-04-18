@@ -1,0 +1,38 @@
+# Claude
+.claude/
+
+# Environment
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+venv/
+env/
+.venv/
+*.egg-info/
+dist/
+build/
+
+# HuggingFace model cache
+*.bin
+*.safetensors
+*.ot
+models/
+
+# Feedback data
+feedback.json
+
+# Project PDF
+*.pdf
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
